@@ -46,6 +46,7 @@ if __name__ == "__main__":
     options = webdriver.ChromeOptions()
     options.add_argument("--enable-chrome-browser-cloud-management")
     driver = webdriver.Chrome(options=options)
+    driver.maximize_window()
     driver.get("https://web.getcontact.com/")
 
     print("Silakan scan QR code dengan aplikasi Getcontact pada smartphone Anda.")
