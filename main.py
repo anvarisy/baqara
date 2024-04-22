@@ -58,11 +58,15 @@ if __name__ == "__main__":
 
     # Iterasi melalui setiap nomor telepon
     for phone in phones:
-        tags, is_spam = query_contact(phone)  # Adjusted to receive is_spam
-        spam_status = "Suspected Spam" if is_spam else "Secure"
-        for tag in tags:
-            results.append({"Nomor HP": phone, "Tag": tag, "Status": spam_status})
-        sleep(3)
+        try:
+            print("Scraping information for {}".format(phone))
+            tags, is_spam = query_contact(phone)  # Adjusted to receive is_spam
+            spam_status = "Suspected Spam" if is_spam else "Secure"
+            for tag in tags:
+                results.append({"Nomor HP": phone, "Tag": tag, "Status": spam_status})
+            sleep(3)
+        except Exception as e:
+            print(f"Error scraping information for {phone}: {e}")
 
 
     # Membuat DataFrame dari hasil
